@@ -51,7 +51,7 @@ window.Webflow.push(() => {
 function init3D() {
   // select container
   const viewport1 = document.querySelector('[data-3d="c"]');
-  const parentElement1 = viewport1.parentElement; // Get the parent element for viewport1
+  const parentElement1 = viewport1.parentElement; // Get the parent element for viewport
 
   // console.log(viewport1);
   // console.log(parentElement1);
