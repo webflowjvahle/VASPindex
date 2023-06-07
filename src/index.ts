@@ -34,7 +34,7 @@ function getyshift() {
   if (window.innerWidth < break1) {
     return -0.5525;
   }
-  return -0.5525;
+  return -0.425;
 }
 
 let currentTime = 0;
