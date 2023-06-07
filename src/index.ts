@@ -26,7 +26,7 @@ function getzoomshift() {
 
 function getyshift() {
   if (window.innerWidth < break3) {
-    return -0.5;
+    return -0.35;
   }
   if (window.innerWidth < break2) {
     return -0.5525;
