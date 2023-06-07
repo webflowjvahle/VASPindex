@@ -16,10 +16,10 @@ function getzoomshift() {
     return 1.925;
   }
   if (window.innerWidth < break2) {
-    return 2;
+    return 3;
   }
   if (window.innerWidth < break1) {
-    return 2;
+    return 3;
   }
   return 3;
 }
