@@ -120,6 +120,7 @@ function init3D() {
   window.addEventListener('resize', () => {
     renderer.setSize(parentElement1.clientWidth, parentElement1.clientHeight);
     camera.aspect = parentElement1.clientWidth / parentElement1.clientHeight;
+    camera.position.set(0, 0.5, getzoomshift());
     camera.updateProjectionMatrix();
   });
 
