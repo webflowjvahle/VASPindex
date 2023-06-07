@@ -10,8 +10,12 @@ let model1;
 const break1 = 992;
 const break2 = 768;
 const break3 = 480;
+const break4 = 256;
 
 function getzoomshift() {
+  if (window.innerWidth < break4) {
+    return 1.925;
+  }
   if (window.innerWidth < break3) {
     return 1.925;
   }
@@ -25,6 +29,9 @@ function getzoomshift() {
 }
 
 function getyshift() {
+  if (window.innerWidth < break4) {
+    return -0.35;
+  }
   if (window.innerWidth < break3) {
     return -0.35;
   }
