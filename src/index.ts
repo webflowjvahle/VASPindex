@@ -173,8 +173,8 @@ function init3D() {
     });
 
     // newMaterial.normalMap = normalTexture;
-    newMaterial.bumpMap = bumpTexture;
-    newMaterial.bumpScale = 0.125;
+    // newMaterial.bumpMap = bumpTexture;
+    // newMaterial.bumpScale = 0.125;
 
     model1.traverse((node) => {
       if (node.isMesh) {
@@ -213,7 +213,7 @@ async function load() {
   const texture = await loadTexture(
     'https://uploads-ssl.webflow.com/646283aaab5c997eb0483d18/6463925c61d09e9e0d0a1415_VASPnet-MainTextureV4.png'
   );
-  return { model1, texture };
+  return { model1 };
 }
 const textureLoader = new THREE.TextureLoader();
 const modelLoader = new GLTFLoader();
