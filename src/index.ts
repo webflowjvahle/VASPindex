@@ -13,20 +13,20 @@ const break3 = 480;
 
 function getzoomshift() {
   if (window.innerWidth < break3) {
-    return 2;
+    return 1.925;
   }
   if (window.innerWidth < break2) {
-    return 3;
+    return 2;
   }
   if (window.innerWidth < break1) {
-    return 3;
+    return 2;
   }
   return 3;
 }
 
 function getyshift() {
   if (window.innerWidth < break3) {
-    return -1;
+    return -0.5;
   }
   if (window.innerWidth < break2) {
     return -0.5525;
