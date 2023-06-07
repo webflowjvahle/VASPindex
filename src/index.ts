@@ -13,15 +13,28 @@ const break3 = 480;
 
 function getzoomshift() {
   if (window.innerWidth < break3) {
-    return 0.625;
+    return 2;
   }
   if (window.innerWidth < break2) {
-    return 0.675;
+    return 3;
   }
   if (window.innerWidth < break1) {
-    return 1;
+    return 3;
   }
-  return 0.75;
+  return 3;
+}
+
+function getyshift() {
+  if (window.innerWidth < break3) {
+    return -1;
+  }
+  if (window.innerWidth < break2) {
+    return -0.5525;
+  }
+  if (window.innerWidth < break1) {
+    return -0.5525;
+  }
+  return -0.5525;
 }
 
 let currentTime = 0;
@@ -50,33 +63,51 @@ function init3D() {
 
   // setting up camera
   const aspectRatio1 = parentElement1.clientWidth / parentElement1.clientHeight;
-  const camera = new THREE.OrthographicCamera(-aspectRatio1, aspectRatio1, 1, -1, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(75, aspectRatio1, 0.1, 1000);
 
-  camera.zoom = 0.4825; // Zoom out to make models appear smaller
   camera.updateProjectionMatrix(); // Must call after changing properties of the camera
 
-  camera.position.set(0.25, 0, 30);
+  camera.position.set(0, 0.5, getzoomshift());
 
   // Add lights
 
-  const pointLight1 = new THREE.PointLight(0xd2e39e, 0.5);
-  const pointLight2 = new THREE.PointLight(0x924abc, 1);
+  const pointLight1 = new THREE.PointLight(0xb4bcc6, 1);
+  const pointLight2 = new THREE.PointLight(0x924abc, 0.25);
+  const pointLight3 = new THREE.PointLight(0x924abc, 0.2);
+  const pointLight4 = new THREE.PointLight(0xfffefa, 0.1);
 
-  pointLight1.position.set(0, 0, 0.525);
+  pointLight1.position.set(0.25, 2, 3);
   pointLight1.distance = 5;
   pointLight1.lookAt(0, 0, 0);
   scene1.add(pointLight1);
 
-  pointLight2.position.set(3, -1, -0.2);
+  pointLight2.position.set(-3, -1, -0.2);
   pointLight2.distance = 5;
   pointLight2.lookAt(0, 0, 0);
   scene1.add(pointLight2);
 
-  // const sphereSize = 1;
-  // const pointLightHelper1 = new THREE.PointLightHelper(pointLight1, sphereSize);
-  // const pointLightHelper2 = new THREE.PointLightHelper(pointLight2, sphereSize);
+  pointLight3.position.set(-3, -1.25, -0.2);
+  pointLight3.distance = 5;
+  pointLight3.lookAt(0, 0, 0);
+  scene1.add(pointLight3);
+
+  pointLight4.position.set(-3, -1.5, -0.2);
+  pointLight4.distance = 5;
+  pointLight4.lookAt(0, 0, 0);
+  scene1.add(pointLight4);
+
+  // const sphereSize1 = 0.5;
+  // const sphereSize2 = 0.5;
+  // const sphereSize3 = 0.5;
+  // const sphereSize4 = 0.5;
+  // const pointLightHelper1 = new THREE.PointLightHelper(pointLight1, sphereSize1);
+  // const pointLightHelper2 = new THREE.PointLightHelper(pointLight2, sphereSize2);
+  // const pointLightHelper3 = new THREE.PointLightHelper(pointLight3, sphereSize3);
+  // const pointLightHelper4 = new THREE.PointLightHelper(pointLight4, sphereSize4);
   // scene1.add(pointLightHelper1);
   // scene1.add(pointLightHelper2);
+  // scene1.add(pointLightHelper3);
+  // scene1.add(pointLightHelper4);
 
   // setting up renderer
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -91,7 +122,6 @@ function init3D() {
     renderer.setSize(parentElement1.clientWidth, parentElement1.clientHeight);
     camera.aspect = parentElement1.clientWidth / parentElement1.clientHeight;
     camera.updateProjectionMatrix();
-    model1.scale.set(getzoomshift(), getzoomshift(), getzoomshift());
   });
 
   // Add controls
@@ -137,7 +167,7 @@ function init3D() {
 
     // newMaterial.normalMap = normalTexture;
     newMaterial.bumpMap = bumpTexture;
-    newMaterial.bumpScale = 0.725;
+    newMaterial.bumpScale = 0.125;
 
     model1.traverse((node) => {
       if (node.isMesh) {
@@ -150,10 +180,8 @@ function init3D() {
 
     // Position the model1
 
-    model1.scale.set(getzoomshift(), getzoomshift(), getzoomshift());
-
-    model1.translateY(-0.725);
-    model1.translateX(1.525);
+    model1.translateY(getyshift());
+    model1.translateX(0);
 
     controls1.update();
 
@@ -197,7 +225,7 @@ function loadTexture(url) {
 function loadModel(url, id) {
   return new Promise((resolve, reject) => {
     modelLoader.load(url, (gltf) => {
-      console.log(gltf);
+      // console.log(gltf);
       const { scene } = gltf;
       const { animations } = gltf;
       resolve({ scene, animations });
