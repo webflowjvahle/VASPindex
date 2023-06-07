@@ -125,8 +125,8 @@ function init3D() {
   });
 
   // Add controls
-  const controls1 = new OrbitControls(camera, renderer.domElement);
-  controls1.enableDamping = true;
+  // const controls1 = new OrbitControls(camera, renderer.domElement);
+  // controls1.enableDamping = true;
 
   // Add axes to the scene
   // const axesHelper1 = new THREE.AxesHelper(6);
@@ -143,7 +143,7 @@ function init3D() {
     if (mixer !== null) {
       mixer.update(delta);
     }
-    controls1.update();
+    // controls1.update();
 
     renderer.render(scene1, camera);
   }
@@ -183,7 +183,7 @@ function init3D() {
     model1.translateY(getyshift());
     model1.translateX(0);
 
-    controls1.update();
+    // controls1.update();
 
     // initialize mixer after model1 is loaded
     mixer = new THREE.AnimationMixer(model1);
