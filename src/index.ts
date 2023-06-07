@@ -45,7 +45,6 @@ const bumpTexture = new THREE.TextureLoader().load(
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
-  // console.log('hello');
   init3D();
 });
 
