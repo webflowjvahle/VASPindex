@@ -172,7 +172,7 @@ function init3D() {
 /* Loader Functions */
 async function load() {
   model1 = await loadModel(
-    'https://uploads-ssl.webflow.com/646283aaab5c997eb0483d18/647df5310fe77bc6a9a42bd5_VASPnet-HomePage-HeroSection-3D%20Symbol%20Flowing%20Animation.-Transperancy%20Fix%20V2.glb.txt'
+    'https://uploads-ssl.webflow.com/646283aaab5c997eb0483d18/647f927c9792f31aa8bd32ad_XReg-VASPindex-MainViusalsV4.glb.txt'
   );
 
   const texture = await loadTexture(
