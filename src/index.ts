@@ -3,24 +3,20 @@ import { TextureLoader } from 'three';
 import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 let model1;
 
 const break1 = 992;
 const break2 = 768;
 const break3 = 480;
-const break4 = 256;
 
 function getzoomshift() {
-  if (window.innerWidth < break4) {
-    return 1;
-  }
   if (window.innerWidth < break3) {
-    return 1.925;
+    return 3;
   }
   if (window.innerWidth < break2) {
-    return 3;
+    return 3.5;
   }
   if (window.innerWidth < break1) {
     return 3;
@@ -29,11 +25,8 @@ function getzoomshift() {
 }
 
 function getyshift() {
-  if (window.innerWidth < break4) {
-    return 0;
-  }
   if (window.innerWidth < break3) {
-    return -0.35;
+    return 0.25;
   }
   if (window.innerWidth < break2) {
     return -0.5525;
@@ -41,7 +34,7 @@ function getyshift() {
   if (window.innerWidth < break1) {
     return -0.5525;
   }
-  return -0.425;
+  return -0.455;
 }
 
 let currentTime = 0;
@@ -78,7 +71,7 @@ function init3D() {
 
   // Add lights
 
-  const pointLight1 = new THREE.PointLight(0xb4bcc6, 1);
+  const pointLight1 = new THREE.PointLight(0xb4bcc6, 1.125);
   const pointLight2 = new THREE.PointLight(0x924abc, 0.25);
   const pointLight3 = new THREE.PointLight(0x924abc, 0.2);
   const pointLight4 = new THREE.PointLight(0xfffefa, 0.1);
@@ -213,7 +206,7 @@ async function load() {
   const texture = await loadTexture(
     'https://uploads-ssl.webflow.com/646283aaab5c997eb0483d18/6463925c61d09e9e0d0a1415_VASPnet-MainTextureV4.png'
   );
-  return { model1 };
+  return { model1, texture };
 }
 const textureLoader = new THREE.TextureLoader();
 const modelLoader = new GLTFLoader();
