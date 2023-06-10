@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { TextureLoader } from 'three';
-import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
+// import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -70,10 +70,13 @@ function init3D() {
 
   // Add lights
 
-  const pointLight1 = new THREE.PointLight(0xb4bcc6, 1.125);
-  const pointLight2 = new THREE.PointLight(0x924abc, 0.25);
-  const pointLight3 = new THREE.PointLight(0x924abc, 0.2);
-  const pointLight4 = new THREE.PointLight(0xfffefa, 0.1);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.025);
+  scene1.add(ambientLight);
+
+  const pointLight1 = new THREE.PointLight(0xb4bcc6, 8);
+  const pointLight2 = new THREE.PointLight(0x924abc, 1);
+  const pointLight3 = new THREE.PointLight(0x924abc, 0.5);
+  const pointLight4 = new THREE.PointLight(0xfffefa, 0.2);
 
   pointLight1.position.set(0.25, 2, 3);
   pointLight1.distance = 5;
@@ -160,21 +163,20 @@ function init3D() {
     const { texture } = data;
 
     const newMaterial = new THREE.MeshStandardMaterial({
-      metalness: 0.2,
-      roughness: 0.5,
+      metalness: 0.1,
+      roughness: 0.75,
       // map: texturefile,
     });
 
-    // newMaterial.normalMap = normalTexture;
-    // newMaterial.bumpMap = bumpTexture;
-    // newMaterial.bumpScale = 0.125;
+    newMaterial.bumpMap = bumpTexture;
+    newMaterial.bumpScale = 0.0035;
 
     model1.traverse((node) => {
       if (node.isMesh) {
         node.material = newMaterial;
         node.material.needsUpdate = true;
-        // console.log(node.material);
-        // console.log('textureChange');
+        console.log(node.material);
+        console.log('textureChange');
       }
     });
 
@@ -206,7 +208,7 @@ async function load() {
   const texture = await loadTexture(
     'https://uploads-ssl.webflow.com/646283aaab5c997eb0483d18/6463925c61d09e9e0d0a1415_VASPnet-MainTextureV4.png'
   );
-  return { model1 };
+  return { model1, texture };
 }
 const textureLoader = new THREE.TextureLoader();
 const modelLoader = new GLTFLoader();
