@@ -200,7 +200,7 @@ function init3D() {
 /* Loader Functions */
 async function load() {
   model1 = await loadModel(
-    'https://uploads-ssl.webflow.com/646283aaab5c997eb0483d18/647f927c9792f31aa8bd32ad_XReg-VASPindex-MainViusalsV4.glb.txt'
+    'https://uploads-ssl.webflow.com/646283aaab5c997eb0483d18/6484be29a71d38fbbe2f3257_XReg-VASPindex-MainViusalsV5.glb.txt'
   );
 
   const texture = await loadTexture(
