@@ -76,7 +76,7 @@ function init3D() {
   const pointLight1 = new THREE.PointLight(0xb4bcc6, 8);
   const pointLight2 = new THREE.PointLight(0x924abc, 1);
   const pointLight3 = new THREE.PointLight(0x924abc, 0.75);
-  const pointLight4 = new THREE.PointLight(0xfffefa, 0.3);
+  const pointLight4 = new THREE.PointLight(0xfffefa, 0.325);
 
   pointLight1.position.set(0.25, 2, 3);
   pointLight1.distance = 5;
