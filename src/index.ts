@@ -70,13 +70,13 @@ function init3D() {
 
   // Add lights
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.025);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.0125);
   scene1.add(ambientLight);
 
   const pointLight1 = new THREE.PointLight(0xb4bcc6, 8);
   const pointLight2 = new THREE.PointLight(0x924abc, 1);
-  const pointLight3 = new THREE.PointLight(0x924abc, 0.5);
-  const pointLight4 = new THREE.PointLight(0xfffefa, 0.2);
+  const pointLight3 = new THREE.PointLight(0x924abc, 0.75);
+  const pointLight4 = new THREE.PointLight(0xfffefa, 0.3);
 
   pointLight1.position.set(0.25, 2, 3);
   pointLight1.distance = 5;
@@ -163,20 +163,20 @@ function init3D() {
     const { texture } = data;
 
     const newMaterial = new THREE.MeshStandardMaterial({
-      metalness: 0.1,
-      roughness: 0.75,
+      metalness: 0.2,
+      roughness: 0.5,
       // map: texturefile,
     });
 
-    newMaterial.bumpMap = bumpTexture;
-    newMaterial.bumpScale = 0.0035;
+    // newMaterial.bumpMap = bumpTexture;
+    // newMaterial.bumpScale = 0.0035;
 
     model1.traverse((node) => {
       if (node.isMesh) {
         node.material = newMaterial;
         node.material.needsUpdate = true;
-        console.log(node.material);
-        console.log('textureChange');
+        // console.log(node.material);
+        // console.log('textureChange');
       }
     });
 
